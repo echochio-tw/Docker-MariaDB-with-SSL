@@ -49,7 +49,7 @@ Copyright (c) 2000, 2016, Oracle, MariaDB Corporation Ab and others.
 
 Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
-MariaDB [(none)]> grant all on *.* to 'cross'@'192.168.0.17' identified by '123456'  require ssl;
+MariaDB [(none)]> grant all on *.* to 'cross'@'172.17.0.1' identified by '123456'  require ssl;
 Query OK, 0 rows affected (0.00 sec)
 
 MariaDB [(none)]> Bye
