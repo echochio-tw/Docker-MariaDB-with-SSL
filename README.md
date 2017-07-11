@@ -28,7 +28,7 @@ ca-cert.pem  ca-key.pem  client-cert.pem  client-key.pem  client-req.pem  server
 docker run -it --name mariadb -p 3306:3306 -v /var/lib/mysql:/var/lib/mysql -v /etc/newcerts:/etc/newcerts -e MYSQL_DATABASE=DB -e MYSQL_USER=user -e MYSQL_PASSWORD=userpass -e MYSQL_ROOT_PASSWORD=admin echochio/alpine-mariadb
 ```
 
-#use env Run mysql docker
+#use env Run mysql docker (maybe not work ?)
 ```
 SERVER_KEY=$(cat -E /etc/newcerts/server-key.pem | xargs)
 SERVER_CERT=$(cat -E /etc/newcerts/server-cert.pem | xargs)
