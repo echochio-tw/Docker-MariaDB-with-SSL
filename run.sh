@@ -20,6 +20,7 @@ fi
 if [ -d /var/lib/mysql/mysql ]; then
         echo "[i] MySQL directory already present, skipping creation"
         chown -R mysql:mysql /var/lib/mysql
+        touch /var/lib/mysql/ssl
 else
         echo "[i] MySQL data directory not found, creating initial DBs"
 
@@ -85,9 +86,12 @@ if [ "$SERVER_KEY" ]; then
   export MYSQLD_SSL_CA=/etc/mysql/CA.crt
 fi
 
+if  [ ! -f "/var/lib/mysql/ssl" ]; then
 sed 's/\[mysqld\]/\[mysqld\]\n\ssl-key=\/etc\/mysql\/server.key/g' /etc/mysql/my.cnf > /etc/mysql/my1.cnf
 sed 's/\[mysqld\]/\[mysqld\]\n\ssl-cert=\/etc\/mysql\/server.crt/g' /etc/mysql/my1.cnf > /etc/mysql/my.cnf
 sed 's/\[mysqld\]/\[mysqld\]\n\ssl-ca=\/etc\/mysql\/CA.crt/g' /etc/mysql/my.cnf > /etc/mysql/my1.cnf
 cp -rf /etc/mysql/my1.cnf /etc/mysql/my.cnf
+touch /var/lib/mysql/ssl
+fi
 
 exec /usr/bin/mysqld --user=mysql --console
