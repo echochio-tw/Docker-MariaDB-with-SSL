@@ -19,7 +19,6 @@ fi
 if [ -d /var/lib/mysql/mysql ]; then
         echo "[i] MySQL directory already present, skipping creation"
         chown -R mysql:mysql /var/lib/mysql
-        touch /var/lib/mysql/ssl
 else
         echo "[i] MySQL data directory not found, creating initial DBs"
 
